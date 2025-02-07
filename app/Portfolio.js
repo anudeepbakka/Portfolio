@@ -10,11 +10,8 @@ import {
   Mail,
   Phone,
   Linkedin,
-  Menu,
-  X,
 } from "lucide-react";
 
-// Previous data declarations remain the same
 const skills = {
   frontend: [
     "React.js",
@@ -128,96 +125,42 @@ const Portfolio = () => {
       <div
         className={`absolute top-4 right-4 flex flex-col space-y-4 text-cyan-200 md:flex ${navOpen ? "block" : "hidden"}`}
       >
-        <button
-          onClick={() => scrollToSection("about")}
-          className="hover:text-cyan-400"
-        >
-          About
-        </button>
-        <button
-          onClick={() => scrollToSection("skills")}
-          className="hover:text-cyan-400"
-        >
-          Skills
-        </button>
-        <button
-          onClick={() => scrollToSection("experience")}
-          className="hover:text-cyan-400"
-        >
-          Experience
-        </button>
-        <button
-          onClick={() => scrollToSection("projects")}
-          className="hover:text-cyan-400"
-        >
-          Projects
-        </button>
+        <button onClick={() => scrollToSection("about")} className="hover:text-cyan-400">About</button>
+        <button onClick={() => scrollToSection("skills")} className="hover:text-cyan-400">Skills</button>
+        <button onClick={() => scrollToSection("experience")} className="hover:text-cyan-400">Experience</button>
+        <button onClick={() => scrollToSection("projects")} className="hover:text-cyan-400">Projects</button>
       </div>
 
       {/* Hero Section */}
-      <div className="max-w-6xl mx-auto mb-16 animate-fade-in flex items-center">
+      <div className="max-w-6xl mx-auto mb-16 animate-fade-in flex flex-col md:flex-row items-center">
         {/* Profile Image on the left */}
-        <div className="flex-none w-48 h-48 rounded-sm overflow-hidden mr-8 border-4 border-cyan-300">
-          <img
-            src="profileimg.png"
-            alt="Profile Picture"
-            className="object-cover w-full h-full"
-          />
+        <div className="flex-none w-48 h-48 rounded-sm overflow-hidden mr-8 border-4 border-cyan-300 mb-6 md:mb-0">
+          <img src="profileimg.png" alt="Profile Picture" className="object-cover w-full h-full" />
         </div>
 
         {/* Text content on the right */}
         <div className="flex-1">
-          <h1 className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-400 mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-400 mb-4">
             {about.title}
           </h1>
-          <p className="text-lg text-cyan-100">{about.description}</p>
-          <div className="mt-2 flex space-x-6 items-center text-cyan-200">
+          <p className="text-lg text-cyan-100 mb-6">{about.description}</p>
+          <div className="flex space-x-6 items-center text-cyan-200">
             {/* Email Icon */}
-            <div
-              onClick={() => handleIconClick("email")}
-              className="cursor-pointer hover:text-cyan-400 flex items-center"
-            >
+            <div onClick={() => handleIconClick("email")} className="cursor-pointer hover:text-cyan-400 flex items-center">
               <Mail className="w-6 h-6 mr-2" />
-              {showDetail === "email" && (
-                <p
-                  onClick={() => handleRedirect("email")}
-                  className="text-cyan-400 cursor-pointer"
-                >
-                  bakka.12.anudeep@gmail.com
-                </p>
-              )}
+              {showDetail === "email" && <p onClick={() => handleRedirect("email")} className="text-cyan-400 cursor-pointer">bakka.12.anudeep@gmail.com</p>}
             </div>
 
             {/* Phone Icon */}
-            <div
-              onClick={() => handleIconClick("phone")}
-              className="cursor-pointer hover:text-cyan-400 flex items-center"
-            >
+            <div onClick={() => handleIconClick("phone")} className="cursor-pointer hover:text-cyan-400 flex items-center">
               <Phone className="w-6 h-6 mr-2" />
-              {showDetail === "phone" && (
-                <p
-                  onClick={() => handleRedirect("phone")}
-                  className="text-cyan-400 cursor-pointer"
-                >
-                  +91 9290083400
-                </p>
-              )}
+              {showDetail === "phone" && <p onClick={() => handleRedirect("phone")} className="text-cyan-400 cursor-pointer">+91 9290083400</p>}
             </div>
 
             {/* LinkedIn Icon */}
-            <div
-              onClick={() => handleIconClick("linkedin")}
-              className="cursor-pointer hover:text-cyan-400 flex items-center"
-            >
+            <div onClick={() => handleIconClick("linkedin")} className="cursor-pointer hover:text-cyan-400 flex items-center">
               <Linkedin className="w-6 h-6 mr-2" />
-              {showDetail === "linkedin" && (
-                <p
-                  onClick={() => handleRedirect("linkedin")}
-                  className="text-cyan-400 cursor-pointer"
-                >
-                  linkedin.com/in/anudeep-bakka-1595b5169/
-                </p>
-              )}
+              {showDetail === "linkedin" && <p onClick={() => handleRedirect("linkedin")} className="text-cyan-400 cursor-pointer">linkedin.com/in/anudeep-bakka-1595b5169/</p>}
             </div>
           </div>
         </div>
@@ -230,23 +173,14 @@ const Portfolio = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {Object.entries(skills).map(([category, skillList], index) => (
-            <Card
-              key={category}
-              className="bg-slate-800/40 backdrop-blur border-slate-700/50 transform transition-all duration-300 hover:scale-105 hover:bg-slate-800/60"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
+            <Card key={category} className="bg-slate-800/40 backdrop-blur border-slate-700/50 transform transition-all duration-300 hover:scale-105 hover:bg-slate-800/60" style={{ animationDelay: `${index * 100}ms` }}>
               <CardHeader>
-                <CardTitle className="capitalize text-xl text-cyan-100">
-                  {category}
-                </CardTitle>
+                <CardTitle className="capitalize text-xl text-cyan-100">{category}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {skillList.map((skill) => (
-                    <Badge
-                      key={skill}
-                      className="bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 transition-colors duration-200"
-                    >
+                    <Badge key={skill} className="bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 transition-colors duration-200">
                       {skill}
                     </Badge>
                   ))}
@@ -258,25 +192,16 @@ const Portfolio = () => {
       </section>
 
       {/* Experience Section */}
-      <section
-        id="experience"
-        className="max-w-6xl mx-auto mb-16 animate-fade-in"
-      >
+      <section id="experience" className="max-w-6xl mx-auto mb-16 animate-fade-in">
         <h2 className="text-3xl font-bold mb-8 flex items-center text-cyan-200">
           <Briefcase className="mr-2" /> Experience
         </h2>
         {experience.map((exp, index) => (
-          <Card
-            key={index}
-            className="mb-6 bg-slate-800/40 backdrop-blur border-slate-700/50 transform transition-all duration-300 hover:translate-x-2 hover:bg-slate-800/60"
-            style={{ animationDelay: `${index * 100}ms` }}
-          >
+          <Card key={index} className="mb-6 bg-slate-800/40 backdrop-blur border-slate-700/50 transform transition-all duration-300 hover:translate-x-2 hover:bg-slate-800/60" style={{ animationDelay: `${index * 100}ms` }}>
             <CardHeader>
               <div className="flex justify-between items-start">
                 <div>
-                  <CardTitle className="text-xl text-cyan-100">
-                    {exp.company}
-                  </CardTitle>
+                  <CardTitle className="text-xl text-cyan-100">{exp.company}</CardTitle>
                   <p className="text-cyan-300">{exp.role}</p>
                 </div>
                 <div className="text-right">
@@ -305,11 +230,7 @@ const Portfolio = () => {
           <Calendar className="mr-2" /> Projects
         </h2>
         {projects.map((proj, index) => (
-          <Card
-            key={index}
-            className="mb-6 bg-slate-800/40 backdrop-blur border-slate-700/50 transform transition-all duration-300 hover:scale-105 hover:bg-slate-800/60"
-            style={{ animationDelay: `${index * 100}ms` }}
-          >
+          <Card key={index} className="mb-6 bg-slate-800/40 backdrop-blur border-slate-700/50 transform transition-all duration-300 hover:scale-105 hover:bg-slate-800/60" style={{ animationDelay: `${index * 100}ms` }}>
             <CardHeader>
               <div className="flex justify-between items-start">
                 <div>
